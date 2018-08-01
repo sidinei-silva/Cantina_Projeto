@@ -5,8 +5,10 @@
             <div class="col-md-12">
                 <div id="main-slider">
                     <div class="item">
-                        <img src="/img/main-slider.jpg" alt="" class="img-responsive"> 
-                        <div class="border-radius:10px; img-responsive" style="transform: translate(-50%, -50%); left: 50%; top: 50%; position: absolute; background: rgba(0, 0, 0, 0.5); height: 200px; width: 80%"></div>
+                        <%= image_tag("template/main-slider.jpg", class: "img-responsive") %>
+                        <div class="border-radius:10px; img-responsive" style="transform: translate(-50%, -50%); left: 50%; top: 50%; position: absolute; background: rgba(0, 0, 0, 0.5); height: 200px; width: 80%">
+                          <div></div>
+                        </div>
                     </div>
                 </div>
                 <!-- /#main-slider -->
@@ -33,18 +35,18 @@ _________________________________________________________ -->
                                 <div class="flipper">
                                     <div class="front">
                                         <a href="detail.html">
-                                            <img src="img/product1.jpg" alt="" class="img-responsive">
+                                           <%= image_tag("template/product1.jpg", class: "img-responsive") %>
                                         </a>
                                     </div>
                                     <div class="back">
                                         <a href="detail.html">
-                                            <img src="img/product1_2.jpg" alt="" class="img-responsive">
+                                          <%= image_tag("template/product1_2.jpg", class: "img-responsive") %>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <a href="detail.html" class="invisible">
-                                <img src="img/product1.jpg" alt="" class="img-responsive">
+                              <%= image_tag("template/product1.jpg", class: "img-responsive") %>
                             </a>
                             <div class="text">
                                 <h3><a href="detail.html">Furzz coat with very but very very long name</a></h3>

@@ -9,8 +9,28 @@
 //
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+
+//##### Template #######
+//=require template/respond.min
+//=require template/jquery-1.11.0.min
+//=require template/bootstrap.min
+//=require template/jquery.cookie
+//=require template/waypoints.min
+//=require template/modernizr
+//=require template/bootstrap-hover-dropdown
+//=require template/front
+
+//=require template/owl.carousel.min
+//=require template/jquery.flexslider
+//=require template/main
+
+//= require_self
+
+
+//##### END Template #####
+
+
