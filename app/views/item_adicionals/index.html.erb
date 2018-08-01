@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Item Adicionals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_adicionals.each do |item_adicional| %>
+      <tr>
+        <td><%= link_to 'Show', item_adicional %></td>
+        <td><%= link_to 'Edit', edit_item_adicional_path(item_adicional) %></td>
+        <td><%= link_to 'Destroy', item_adicional, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item Adicional', new_item_adicional_path %>

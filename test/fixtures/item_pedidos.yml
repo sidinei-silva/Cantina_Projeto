@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantidadeItem: 1
+  statusItem: false
+  precoItem: 1.5
+
+two:
+  quantidadeItem: 1
+  statusItem: false
+  precoItem: 1.5

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  valorAdicional: 1.5
+  descricaoAdicional: MyString
+  statusAdicional: false
+
+two:
+  valorAdicional: 1.5
+  descricaoAdicional: MyString
+  statusAdicional: false

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantidadeitem:</strong>
+  <%= @item_pedido.quantidadeItem %>
+</p>
+
+<p>
+  <strong>Statusitem:</strong>
+  <%= @item_pedido.statusItem %>
+</p>
+
+<p>
+  <strong>Precoitem:</strong>
+  <%= @item_pedido.precoItem %>
+</p>
+
+<%= link_to 'Edit', edit_item_pedido_path(@item_pedido) %> |
+<%= link_to 'Back', item_pedidos_path %>
