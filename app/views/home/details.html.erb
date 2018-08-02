@@ -19,22 +19,43 @@
               <h1 class="text-center"><%= @produto.descricaoProduto %></h1>
               <p class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a>
               </p>
-              <p class="price">R$: <%= @produto.precoProduto %></p>
 
+              <p class="price">R$: <%= @produto.precoProduto %></p>
+              <br>
+              <p><h4 class="text-center">Acompanhamentos:</h4></p>
+              <div class="container">
+                <ul class="" id="acompanhamentos">
+                </ul>
+              </div>
+              <div><h2 class="text-center">Total:</h2></div>
+              <p class="price" id="valorTotal">R$: </p>
               <p class="text-center buttons">
-                <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                <a href="basket.html" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to cart</a>
               </p>
+
             </div>
             <div><h3 class="text-center">Acompanhamentos:</h3></div>
+
             <div class="box">
 
 
-              <%= form_with(model: @item_adicional, local: true) do |form| %>
-                <%= collection_check_boxes(:adicional, :adicional_ids, @adicional.all, :id, :descricaoAdicional) %>
-                <div class="actions">
-                  <%= form.submit %>
+
+                <div class="form-group">
+                  <%= collection_check_boxes(:item_adicional, :adicional_id, @adicional.all, :id, :descricaoAdicional) do |b| %>
+                    <div class="form-check">
+                      <%= b.label class: "form-check-label", for: b.object.id do%>
+                        <%= b.check_box class: "form-check-input", id: b.object.id%>
+                        <%=b.text %>
+                        (<b> + </b><span id= valorAdicional><%= b.object.valorAdicional %></span>)
+
+
+
+                      <% end %>
+                    </div>
+                  <% end %>
                 </div>
-              <%end %>
+
+
 
             </div>
           </div>
@@ -66,3 +87,29 @@
   </div>
   <!-- /#content -->
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+        var valorBase = <%= @produto.precoProduto %>;
+        var valorTotal = valorBase;
+        $("#valorTotal").text("R$: "+valorTotal);
+
+        $('.form-group input[type=checkbox]').click(function () {
+            var valorAdicional = parseFloat($("#valorAdicional").text()) ;
+
+            if ($(this).is(':checked')) {
+                var id = $(this).attr('id');
+                var name = $("#"+id+"").prop("labels");
+                $("#acompanhamentos").append($("<li id=" + id + ">").text($(name).text()));
+                valorTotal = valorTotal + valorAdicional;
+                $("#valorTotal").text("R$: "+valorTotal);
+            }
+            else{
+                var id = $(this).attr('id');
+                $("#"+id).remove();
+                valorTotal = valorTotal - valorAdicional;
+                $("#valorTotal").text("R$: "+valorTotal);
+            }
+        });
+    });
+</script>
