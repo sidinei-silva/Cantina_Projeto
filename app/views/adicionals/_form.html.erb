@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :produto %>
+    <%= collection_select(:adicional, :produto_id, Produto.all, :id, :descricaoProduto) %>
+  </div>
+
+  <div class="field">
     <%= form.label :valorAdicional %>
     <%= form.text_field :valorAdicional %>
   </div>

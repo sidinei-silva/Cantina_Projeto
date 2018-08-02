@@ -1,1 +1,68 @@
-<%= @produto.descricaoProduto %>
+
+<div id="all">
+
+  <div id="content">
+    <div class="container">
+
+      <div class="col-md-1"></div>
+
+      <div class="col-md-10">
+
+        <div class="row" id="productMain">
+          <div class="col-sm-6">
+            <div id="mainImage">
+              <%= image_tag("template/detailbig1.jpg", class: "img-responsive") %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="box">
+              <h1 class="text-center"><%= @produto.descricaoProduto %></h1>
+              <p class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a>
+              </p>
+              <p class="price">R$: <%= @produto.precoProduto %></p>
+
+              <p class="text-center buttons">
+                <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+              </p>
+            </div>
+            <div><h3 class="text-center">Acompanhamentos:</h3></div>
+            <div class="box">
+
+
+              <%= form_with(model: @item_adicional, local: true) do |form| %>
+                <%= collection_check_boxes(:adicional, :adicional_ids, @adicional.all, :id, :descricaoAdicional) %>
+                <div class="actions">
+                  <%= form.submit %>
+                </div>
+              <%end %>
+
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="box" id="details">
+          <p>
+          <h4>Descrição do Produtos</h4>
+          <blockquote>
+            <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+            </p>
+          </blockquote>
+          <h4>Acompanhamentos</h4>
+          <ul>
+            <li>Regular fit</li>
+            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+          </ul>
+
+
+
+          <hr>
+        </div>
+      </div>
+      <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+  </div>
+  <!-- /#content -->
+</div>
