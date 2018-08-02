@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_191629) do
 
   create_table "produtos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "descricaoProduto"
-    t.float "precoProduto"
+    t.string "precoProduto"
     t.string "imagemProduto"
     t.boolean "statusProduto"
     t.datetime "created_at", null: false

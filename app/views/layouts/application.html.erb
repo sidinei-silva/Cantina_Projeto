@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',  media: 'all', 'data-turbolinks-track': 'reload'  %>
   </head>
 
   <body>
@@ -72,11 +72,9 @@
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
-
-                <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="#" data-animate-hover="bounce">
                     <%= image_tag("template/logo.png", alt: "Obaju Logo", class: "hidden-xs") %>
                     <%= image_tag("template/logo-small.png", alt: "Obaju Logo", class: "visible-xs") %>
-                    
                 </a>
                 <div class="navbar-buttons">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
@@ -97,7 +95,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.html">Home</a>
+                    <li class="active"><a href="#">Home</a>
                     </li>
                 </ul>
 

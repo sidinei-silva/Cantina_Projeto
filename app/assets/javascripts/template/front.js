@@ -45,7 +45,7 @@ function demo() {
     });
 }
 
-/* product detail gallery */
+/* product details gallery */
 
 function productDetailGallery(confDetailSwitch) {
     $('.thumb:first').addClass('active');

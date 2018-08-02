@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root :to => 'home#index'
-  get 'home/index'
+  root to: 'home#index'
+  get '/home' => 'home#index'
+  get 'details' => 'home#details', as: 'detalhes'
   resources :clientes
   resources :pedidos
   resources :item_pedidos

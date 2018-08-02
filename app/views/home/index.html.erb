@@ -18,7 +18,6 @@
         <!-- *** HOT PRODUCT SLIDESHOW ***
 _________________________________________________________ -->
         <div id="hot">
-
             <div class="box">
                 <div class="container">
                     <div class="col-md-12">
@@ -27,35 +26,37 @@ _________________________________________________________ -->
                 </div>
             </div>
 
+            <% if flash[:notice] %>
+              <div class="alert alert-danger text-center"><%= flash[:notice] %></div>
+            <% end %>
+
             <div class="container">
                 <div class="product-slider">
+                  <% @produtos.each do |produto| %>
                     <div class="item">
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
                                     <div class="front">
-                                        <a href="detail.html">
-                                           <%= image_tag("template/product1.jpg", class: "img-responsive") %>
-                                        </a>
+                                      <%= link_to image_tag("template/product1.jpg", class: "img-responsive"), detalhes_path(produto) %>
                                     </div>
                                     <div class="back">
-                                        <a href="detail.html">
-                                          <%= image_tag("template/product1_2.jpg", class: "img-responsive") %>
-                                        </a>
+                                      <%= link_to image_tag("template/product1_2.jpg", class: "img-responsive"), detalhes_path(produto) %>
+
                                     </div>
                                 </div>
                             </div>
-                            <a href="detail.html" class="invisible">
-                              <%= image_tag("template/product1.jpg", class: "img-responsive") %>
-                            </a>
+                          <%= link_to image_tag("template/product1.jpg", class: "img-responsive"), detalhes_path(produto) %>
+
                             <div class="text">
-                                <h3><a href="detail.html">Furzz coat with very but very very long name</a></h3>
-                                <p class="price">$143.00</p>
+                                <h3><%= link_to produto.descricaoProduto, detalhes_path(produto) %></h3>
+                                <p class="price">R$: <%= produto.precoProduto %></p>
                             </div>
                             <!-- /.text -->
                         </div>
                         <!-- /.product -->
                     </div>
+                  <% end %>
                 </div>
                 <!-- /.product-slider -->
             </div>
