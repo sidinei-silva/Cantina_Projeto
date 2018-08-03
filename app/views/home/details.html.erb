@@ -1,13 +1,8 @@
 
 <div id="all">
-
   <div id="content">
     <div class="container">
-
-      <div class="col-md-1"></div>
-
-      <div class="col-md-10">
-
+      <div class="col-md-10 col-md-push-1">
         <div class="row" id="productMain">
           <div class="col-sm-6">
             <div id="mainImage">
@@ -16,30 +11,19 @@
           </div>
           <div class="col-sm-6">
             <div class="box">
-              <h1 class="text-center"><%= @produto.descricaoProduto %></h1>
-              <p class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a>
-              </p>
-
-              <p class="price">R$: <%= @produto.precoProduto %></p>
-              <br>
-              <p><h4 class="text-center">Acompanhamentos:</h4></p>
-              <div class="container">
-                <ul class="" id="acompanhamentos">
-                </ul>
+              <div class="container-fluid">
+                <h2 class="text-center"><b><%= @produto.descricaoProduto %></b></h2>
+                <div class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a></div>
+                <span class="lead  ">R$ <%= @produto.precoProduto %></span>
               </div>
-              <div><h2 class="text-center">Total:</h2></div>
-              <p class="price" id="valorTotal">R$: </p>
-              <p class="text-center buttons">
-                <a href="basket.html" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-              </p>
-
-            </div>
-            <div><h3 class="text-center">Acompanhamentos:</h3></div>
-
-            <div class="box">
-
-
-
+              <hr>
+              <div class="container-fluid">
+                <p><b>Nome do produto: </b><%= @produto.descricaoProduto %></p>
+                <p><b>Disponibilidade : </b><span class="text-success">Disponivel</span></p>
+              </div>
+              <hr>
+              <div class="container-fluid">
+                <p class="text-large">Acompanhamentos</p>
                 <div class="form-group">
                   <%= collection_check_boxes(:item_adicional, :adicional_id, @adicional.all, :id, :descricaoAdicional) do |b| %>
                     <div class="form-check">
@@ -47,37 +31,37 @@
                         <%= b.check_box class: "form-check-input", id: b.object.id%>
                         <%=b.text %>
                         (<b> + </b><span id= valorAdicional><%= b.object.valorAdicional %></span>)
-
-
-
                       <% end %>
                     </div>
                   <% end %>
                 </div>
-
-
-
+              </div>
+              <hr>
+              <div class=" text-center">
+                <h3 class="">Total:</h3>
+                <h2 id="valorTotal"> R$: </h2>
+              </div>
+              <div class="container-fluid">
+                <p class="text-center buttons">
+                  <a href="basket.html" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                </p>
+              </div>
             </div>
           </div>
-
         </div>
-
-
         <div class="box" id="details">
           <p>
-          <h4>Descrição do Produtos</h4>
+          <h4>Descrição do Produto</h4>
           <blockquote>
             <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
             </p>
           </blockquote>
           <h4>Acompanhamentos</h4>
           <ul>
-            <li>Regular fit</li>
-            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+            <% @adicional.each do |adicional|  %>
+              <li><%= adicional.descricaoAdicional %></li>
+            <%end %>
           </ul>
-
-
-
           <hr>
         </div>
       </div>
@@ -98,15 +82,11 @@
             var valorAdicional = parseFloat($("#valorAdicional").text()) ;
 
             if ($(this).is(':checked')) {
-                var id = $(this).attr('id');
-                var name = $("#"+id+"").prop("labels");
-                $("#acompanhamentos").append($("<li id=" + id + ">").text($(name).text()));
+
                 valorTotal = valorTotal + valorAdicional;
                 $("#valorTotal").text("R$: "+valorTotal);
             }
             else{
-                var id = $(this).attr('id');
-                $("#"+id).remove();
                 valorTotal = valorTotal - valorAdicional;
                 $("#valorTotal").text("R$: "+valorTotal);
             }
