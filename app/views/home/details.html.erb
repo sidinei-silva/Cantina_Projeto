@@ -37,7 +37,7 @@
                 </div>
               </div>
               <hr>
-              <div class=" text-center">
+              <div class="text-center">
                 <h3 class="">Total:</h3>
                 <h2 id="valorTotal"> R$: </h2>
               </div>
@@ -74,12 +74,12 @@
 
 <script type="text/javascript" charset="utf-8">
     $(function () {
-        var valorBase = <%= @produto.precoProduto %>;
-        var valorTotal = valorBase;
+
+        let valorTotal = <%= @produto.precoProduto %>;
         $("#valorTotal").text("R$: "+valorTotal);
 
         $('.form-group input[type=checkbox]').click(function () {
-            var valorAdicional = parseFloat($("#valorAdicional").text()) ;
+            let valorAdicional = parseFloat($("#valorAdicional").text()) ;
 
             if ($(this).is(':checked')) {
 
