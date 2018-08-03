@@ -69,7 +69,7 @@
     <div class="navbar navbar-default yamm" role="navigation" id="navbar">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand home" href="#" data-animate-hover="bounce">
+                <a class="navbar-brand home" href="/" data-animate-hover="bounce" data-turbolinks="false">
                     <%= image_tag("template/logo.png", alt: "Obaju Logo", class: "hidden-xs") %>
                     <%= image_tag("template/logo-small.png", alt: "Obaju Logo", class: "visible-xs") %>
                 </a>
@@ -92,8 +92,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="#">Home</a>
-                    </li>
+                    <li class="active"> <%= link_to("Home", root_url , :"data-turbolinks" => false) %></li>
                 </ul>
 
             </div>
@@ -265,6 +264,6 @@ _________________________________________________________ -->
     </div>
     <!-- *** COPYRIGHT END *** -->
     
-    
+
   </body>
 </html>

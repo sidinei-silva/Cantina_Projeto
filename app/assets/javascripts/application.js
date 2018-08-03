@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
+//= require turbolinks
+//= require rails-ujs
+//= require activestorage
 
 
 //##### Template #######
@@ -25,12 +28,6 @@
 //=require template/owl.carousel.min
 //=require template/jquery.flexslider
 //=require template/main
-
-//= require rails-ujs
-//= require activestorage
-//= require turbolinks
-
-//= require_self
 
 
 //##### END Template #####
