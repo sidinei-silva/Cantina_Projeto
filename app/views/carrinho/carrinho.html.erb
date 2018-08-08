@@ -1,4 +1,2 @@
-<% #@produto_id %>
-<% #@adicionals_id %>
-<%= @item.inspect %> <br>
-<%= @carrinho %>
+<%= session[:cart].count %> <br>
+<%= session[:cart].inspect %>
