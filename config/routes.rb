@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :clientes
-
   root to: 'home#index'
   get '/home' => 'home#index'
-  get 'details' => 'home#details', as: 'detalhes'
+  get '/details' => 'home#details', as: 'detalhes'
   get '/carrinho' => 'carrinho#carrinho'
+  post '/carrinho' => 'carrinho#carrinho'
+  resources :carrinho
+  devise_for :clientes
   resources :clientes
   resources :pedidos
   resources :item_pedidos

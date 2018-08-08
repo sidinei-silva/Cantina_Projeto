@@ -1,77 +1,85 @@
-
-<div id="all">
-  <div id="content">
-    <div class="container">
-      <div class="col-md-10 col-md-push-1">
-        <div class="row" id="productMain">
-          <div class="col-sm-6">
-            <div id="mainImage">
-              <%= image_tag("template/detailbig1.jpg", class: "img-responsive") %>
+<%= form_for :carrinho, url:carrinho_path do |form| %>
+  <div id="all">
+    <div id="content">
+      <div class="container">
+        <div class="col-md-10 col-md-push-1">
+          <div class="row" id="productMain">
+            <div class="col-sm-6">
+              <div id="mainImage">
+                <%= image_tag("template/detailbig1.jpg", class: "img-responsive") %>
+              </div>
             </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="box">
-              <div class="container-fluid">
-                <h2 class="text-center"><b><%= @produto.descricaoProduto %></b></h2>
-                <div class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a></div>
-                <span class="lead  ">R$ <%= @produto.precoProduto %></span>
-              </div>
-              <hr>
-              <div class="container-fluid">
-                <p><b>Nome do produto: </b><%= @produto.descricaoProduto %></p>
-                <p><b>Disponibilidade : </b><span class="text-success">Disponivel</span></p>
-              </div>
-              <hr>
-              <div class="container-fluid">
-                <p class="text-large">Acompanhamentos</p>
-                <div class="form-group">
-                  <%= collection_check_boxes(:item_adicional, :adicional_id, @adicional.all, :id, :descricaoAdicional) do |b| %>
-                    <div class="form-check">
-                      <%= b.label class: "form-check-label", for: b.object.id do%>
-                        <%= b.check_box class: "form-check-input", id: b.object.id%>
-                        <%=b.text %>
-                        (<b> + </b><span id= valorAdicional><%= b.object.valorAdicional %></span>)
+            <div class="col-sm-6">
+              <div class="box">
+                <div class="container-fluid">
+                  <h2 class="text-center"><b><%= @produto.descricaoProduto %></b></h2>
+                  <div class="goToDescription"><a href="#details" class="scroll-to">Ver descrição do produto </a></div>
+                  <span class="lead  ">R$ <%= @produto.precoProduto %></span>
+                </div>
+                <hr>
+                <div class="container-fluid">
+                  <p><b>Nome do produto: </b><%= @produto.descricaoProduto %></p>
+                  <p><b>Disponibilidade : </b><span class="text-success">Disponivel</span></p>
+                </div>
+                <hr>
+                <div class="container-fluid">
+                  <p class="text-large">Acompanhamentos</p>
+
+                  <%= hidden_field_tag  'item[produto_id]', @produto.id %>
+                  <div class="form-group">
+                    <%= collection_check_boxes(:item, :adicionals_id, @adicional.all, :id, :descricaoAdicional) do |b| %>
+                      <div class="form-check">
+                        <%= b.label class: "form-check-label", for: b.object.id do%>
+                          <%= b.check_box class: "form-check-input", id: b.object.id%>
+                          <%=b.text %>
+                          (<b> + </b><span id= valorAdicional><%= b.object.valorAdicional %></span>)
+                        <% end %>
+                      </div>
+                    <% end %>
+                  </div>
+
+                </div>
+                <hr>
+                <div class="text-center">
+                  <h3 class="">Total:</h3>
+                  <h2 id="valorTotal"> R$: </h2>
+                </div>
+                <div class="container-fluid">
+                  <p class=" buttons">
+                    <div class="actions text-center">
+                      <%= form.button :submit, :class=>"btn btn-success" do %>
+                        <i class="fa fa-shopping-cart"></i> Add to cart
                       <% end %>
                     </div>
-                  <% end %>
+
+                  </p>
                 </div>
-              </div>
-              <hr>
-              <div class="text-center">
-                <h3 class="">Total:</h3>
-                <h2 id="valorTotal"> R$: </h2>
-              </div>
-              <div class="container-fluid">
-                <p class="text-center buttons">
-                  <a href="basket.html" class="btn btn-success"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                </p>
               </div>
             </div>
           </div>
+          <div class="box" id="details">
+            <p>
+            <h4>Descrição do Produto</h4>
+            <blockquote>
+              <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+              </p>
+            </blockquote>
+            <h4>Acompanhamentos</h4>
+            <ul>
+              <% @adicional.each do |adicional|  %>
+                <li><%= adicional.descricaoAdicional %></li>
+              <%end %>
+            </ul>
+            <hr>
+          </div>
         </div>
-        <div class="box" id="details">
-          <p>
-          <h4>Descrição do Produto</h4>
-          <blockquote>
-            <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-            </p>
-          </blockquote>
-          <h4>Acompanhamentos</h4>
-          <ul>
-            <% @adicional.each do |adicional|  %>
-              <li><%= adicional.descricaoAdicional %></li>
-            <%end %>
-          </ul>
-          <hr>
-        </div>
+        <!-- /.col-md-9 -->
       </div>
-      <!-- /.col-md-9 -->
+      <!-- /.container -->
     </div>
-    <!-- /.container -->
+    <!-- /#content -->
   </div>
-  <!-- /#content -->
-</div>
-
+<% end %>
 <script type="text/javascript" charset="utf-8">
     $(function () {
 
