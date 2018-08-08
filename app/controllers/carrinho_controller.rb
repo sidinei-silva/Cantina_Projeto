@@ -3,10 +3,10 @@ class CarrinhoController < ApplicationController
   @carrinho = []
   def carrinho
     if params[:item] != nil
-      produto_id = params[:item][:produto_id]
-      adicionals_id = params[:item][:adicionals_id]
-      carrinho.wrap(item: produto_id)
-      carrinho.wrap(item: adicionals_id)
+      @produto_id = produto_id = params[:item][:produto_id]
+      @adicionals_id = params[:item][:adicionals_id]
+      item = [@produto_id, @adicionals_id]
+      carrinho.push(item)
     end
 
   end
